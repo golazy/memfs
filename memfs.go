@@ -141,6 +141,13 @@ func (d *dir) add(components []string, data []byte) {
 
 }
 
+func (m *FS) AddMap(files map[string]string) *FS {
+	for file, content := range files {
+		m.Add(file, []byte(content))
+	}
+
+	return m
+}
 func (m *FS) Add(name string, data []byte) *FS {
 	if name == "" {
 		panic("name can't be empty")
